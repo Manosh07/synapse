@@ -12,7 +12,7 @@
     
         - **Subscription**: the name of the subscription you are using in this lab
 
-        - **Resource group**: **synapse-xxxxx**, 'xxxxx' is some random suffix
+        - **Resource group**: **synapse-xxxxx**, 'xxxxx' is some unique suffix
     
     - In the Database details section, type in the following information
     
@@ -20,12 +20,15 @@
      
         - Server: Create a new server by clicking **Create new** with the following settings and click on **OK**:
             - **Server name**: **sqlservicexxxxx**, where **xxxxx** are your unique suffix
+            - **Location**: choose a **location** near as your **data-engineering-synapse-xxxxx** resource group.
             - **Server admin login**: **sqladmin**
             - **Password**: **Pa55w.rd**
             - **Confirm Password**: **Pa55w.rd**
-            - **Location**: choose a **location** near as your **data-engineering-synapse-xxxxx** resource group.
             - click on **OK**
-            - Leave the remaining settings to their defaults, and then click on **OK**
+         
+         - Want to use SQL elastic pool?  **No**
+         
+         - Workload environment **Development**
         
         - **Cmpute + Storage**: Select Standard Service Tier
         
