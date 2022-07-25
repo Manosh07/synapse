@@ -32,7 +32,7 @@ In this excercise you will be peforming following task:
 - Task 2: Create tables and procedure
 - Task 3: Create a pipeline
 
-### Task : Create and configure a SQL Database instance.
+## Task 1 : Create and configure a SQL Database instance.
 
 1. In the Azure portal, navigate to the **+ Create a resource** blade.
 
@@ -94,3 +94,14 @@ In this excercise you will be peforming following task:
    > **Note**: The provision will takes approximately 4 minutes.
 
 > **Result**: After you completed this task, you have an Azure SQL Database instance
+
+
+## Task 2: Create table and procedures
+
+### Create source tables in your SQL database
+
+1. Open SQL Database, and connect to your SQL Server database.
+   ![Open SQL Database](img/SQL_DB_QUERY_EDITOR_OPEN.png)
+   
+2. Run the following SQL command against your database to create tables named customer_table and project_table:.
+   ![Open SQL Database](img/SQL_DB_QUERY_EDITOR_RUN_QUERY.png)
