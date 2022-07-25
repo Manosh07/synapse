@@ -35,7 +35,7 @@
         
         Step 2:
         
-        ![Creating a server instance in the Azure portal](../img/SQL_DB_SERV_TIER.png)
+        ![Creating a server instance in the Azure portal](img/SQL_DB_SERV_TIER.png)
         
         Step 3:
         
