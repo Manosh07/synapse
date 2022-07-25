@@ -56,4 +56,4 @@
 
    > **Note**: The provision will takes approximately 4 minutes.
 
-> **Result**: After you completed this exercise, you have an Azure SQL Database instance
+> **Result**: After you completed this task, you have an Azure SQL Database instance
