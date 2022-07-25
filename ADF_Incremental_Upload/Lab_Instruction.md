@@ -2,17 +2,17 @@
 
 ## Overview
 
-## Here are the important steps to create this solution:
+### Here are the important steps to create this solution:
 
 ## 1. Select the watermark column.
 
 Select one column for each table in the source data store, which can be used to identify the new or updated records for every run. Normally, the data in this selected column (for example, last_modify_time or ID) keeps increasing when rows are created or updated. The maximum value in this column is used as a watermark.
 
-## 2. Prepare a data store to store the watermark value.
+### 2. Prepare a data store to store the watermark value.
 
 In this tutorial, you store the watermark value in a SQL database.
 
-## 3. Create a pipeline with the following activities:
+### 3. Create a pipeline with the following activities:
 
 a. Create a ForEach activity that iterates through a list of source table names that is passed as a parameter to the pipeline. For each source table, it invokes the following activities to perform delta loading for that table.
 
@@ -22,10 +22,15 @@ c. Create a Copy activity that copies rows from the source data store with the v
 
 d. Create a StoredProcedure activity that updates the watermark value for the pipeline that runs next time.
 
-## Here is the high-level solution diagram:
+### Here is the high-level solution diagram:
 ![Select Standard](img/high-level-solution-diagram.png)
 
 Reference: [Micrsoft Pages](https://docs.microsoft.com/en-us/azure/data-factory/tutorial-incremental-copy-multiple-tables-portal)
+
+In this excercise you will be peforming following task:
+- Task 1: Create and configure a SQL Database instance.
+- Task 2: Create tables and procedure
+- Task 3: Create a pipeline
 
 ### Task : Create and configure a SQL Database instance.
 
