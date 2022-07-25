@@ -420,6 +420,7 @@ select * from watermarktable
 | --------- | -------------- |
 | customer_table | 2017-09-05 08:06:00.000 |
 | project_table | 2017-03-04 05:16:00.000 |
+
 Notice that the watermark values for both tables were updated.
 
 ## Add more data to the source tables
@@ -479,4 +480,5 @@ select * from watermarktable
 | --------- | -------------- |
 | customer_table | 2017-09-08 00:00:00.000 |
 | project_table | 2017-10-01 00:00:00.000 |
+
 Notice that the watermark values for both tables were updated.
