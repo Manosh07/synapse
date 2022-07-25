@@ -251,7 +251,7 @@ END
   - Click: **Ok**
   
   - Under setting tab of Lookup activity
-    - Select **Frist Row only**: Unchecked
+    - Select Frist Row only: **Unchecked**
     - Use query: **Table**
  
       ![PIPELINE_TABLE_LIST_LOOKUP_ACTIVITY_SETTING_FIRSTROW](img/PIPELINE_TABLE_LIST_LOOKUP_ACTIVITY_SETTING_FIRSTROW.png)
@@ -284,7 +284,9 @@ END
    - Select Query for Use Query.
    - Enter the following SQL query for Query.
     
-     ```select * from watermarktable where TableName  =  '@{item().TableName}'```
+     ```
+     select * from watermarktable where TableName  =  '@{item().TableName}'
+     ```
     
      ![PIPELINE_FOREACH_LOOKUP_ACTIVITY_SETTING_PROP_1](img/PIPELINE_FOREACH_LOOKUP_ACTIVITY_SETTING_PROP_1.png)
 
@@ -304,6 +306,44 @@ END
    - Select Query for Use Query.
    - Enter the following SQL query for Query.
    
-     ```select MAX(@{item().WaterMark_Column}) as NewWatermarkvalue from @{item().TABLE_NAME}```
+     ```
+     select MAX(@{item().WaterMark_Column}) as NewWatermarkvalue from @{item().TABLE_NAME}
+     ```
      
      ![PIPELINE_FOR_LOOKUP_ACT2_SETTING](img/PIPELINE_FOR_LOOKUP_ACT2_SETTING.png)
+
+11. Drag-drop the Copy activity from the Activities toolbox, and enter IncrementalCopyActivity for Name.
+12. Connect Lookup activities to the Copy activity one by one. To connect, start dragging at the green box attached to the Lookup activity and drop it on the Copy activity. Release the mouse button when the border color of the Copy activity changes to blue.
+
+    ![PIPELINE_FOR_LOOKUP_COPY_GEN](img/PIPELINE_FOR_LOOKUP_COPY_GEN.png)
+
+13. Select the Copy activity in the pipeline. Switch to the Source tab in the Properties window.
+
+    - Select SourceDataset for Source Dataset.
+    - Select Query for Use Query.
+    - Enter the following SQL query for Query.
+      ```
+      select * from @{item().TABLE_NAME} where @{item().WaterMark_Column} > '@{activity('LookupOldWaterMarkActivity').output.firstRow.WatermarkValue}' and @{item().WaterMark_Column} <= '@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}'
+      ```
+      ![PIPELINE_FOR_LOOKUP_COPY_SOURCE_DATASET](img/PIPELINE_FOR_LOOKUP_COPY_SOURCE_DATASET.png)
+      
+14. Switch to the Sink tab, and click + New for Sink Dataset as mention below:
+    
+    - Search for synapse then select Azure Synapse Analytics and click continue.
+    - Set properties:
+      - Name: ```SinkDataset```
+      - Linked Service Select: **sqlpool01**
+      - Table Name: **You do not select a table here**. 
+      - Click" **Ok**
+    - In the sink tab select open
+      
+      ![PIPELINE_FOR_LOOKUP_COPY_SINK_DATASET_OPEN](img/PIPELINE_FOR_LOOKUP_COPY_SINK_DATASET_OPEN.png)
+      
+ 15. Switch to the Parameters tab in the Properties window of SinkDataset, and do the following steps:
+ 
+     - Click New in the Create/update parameters section.
+     - Enter SinkTableName for the name, and String for the type. This dataset takes SinkTableName as a parameter. The SinkTableName parameter is set by the pipeline dynamically at runtime. The ForEach activity in the pipeline iterates through a list of table names and passes the table name to this dataset in each iteration.
+     
+       ![PIPELINE_FOR_LOOKUP_COPY_SINK_DATASET_PARA](img/PIPELINE_FOR_LOOKUP_COPY_SINK_DATASET_PARA.png)
+ 
+ 16. 
