@@ -424,7 +424,7 @@ select * from watermarktable
 Notice that the watermark values for both tables were updated.
 
 ## Add more data to the source tables
-Run the following query against the source SQL Server database to update an existing row in customer_table. Insert a new row into project_table.
+Run the following query against the source **SQL Server database** to update an existing row in **customer_table**. Insert a new row into **project_table**.
 
 ```
 UPDATE customer_table
