@@ -373,3 +373,67 @@ END
       | TableName | String | @{activity('LookupOldWaterMark').output.firstRow.TableName} |
       
       ![PIPELINE_FOR_PROCEDURE_SETTING](img/PIPELINE_FOR_PROCEDURE_SETTING.png)
+
+21. Select Publish All to publish the entities you created.
+22. Wait until you see the Successfully published message. To see the notifications, click the Show Notifications link. Close the notifications window by clicking X.
+
+### Run the pipeline
+
+On the toolbar for the pipeline, click Add trigger, and click Trigger Now.
+
+### Review the results
+In SQL Server Management Studio, run the following queries against the target SQL database to verify that the data was copied from source tables to destination tables:
+
+**Query**
+``` 
+select * from customer_table
+```
+
+**Output**
+| PersonID |Name | LastModifytime |
+| - | ------|------------------------ |
+| 1	| John	| 2017-09-01 00:56:00.000 |
+| 2	| Mike	| 2017-09-02 05:23:00.000 |
+| 3	| Alice	| 2017-09-03 02:36:00.000 |
+| 4	| Andy	| 2017-09-04 03:21:00.000 |
+| 5	| Anny	| 2017-09-05 08:06:00.000 |
+
+**Query**
+``` 
+select * from project_table
+```
+
+**Output**
+| Project | Creationtime |
+| ------- | ------------ |
+| project1	| 2015-01-01 00:00:00.000 |
+| project2	| 2016-02-02 01:23:00.000 |
+| project3	| 2017-03-04 05:16:00.000 |
+
+**Query**
+``` 
+select * from watermarktable
+```
+
+**Output**
+| TableName	| WatermarkValue |
+| --------- | -------------- |
+| customer_table | 2017-09-05 08:06:00.000 |
+| project_table | 2017-03-04 05:16:00.000 |
+Notice that the watermark values for both tables were updated.
+
+## Add more data to the source tables
+Run the following query against the source SQL Server database to update an existing row in customer_table. Insert a new row into project_table.
+
+```
+UPDATE customer_table
+SET [LastModifytime] = '2017-09-08T00:00:00Z', [name]='NewName' where [PersonID] = 3
+
+INSERT INTO project_table
+(Project, Creationtime)
+VALUES
+('NewProject','10/1/2017 0:00:00 AM');
+```
+
+### Rerun the pipeline
+On the toolbar for the pipeline, click Add trigger, and click Trigger Now.
