@@ -339,11 +339,37 @@ END
       
       ![PIPELINE_FOR_LOOKUP_COPY_SINK_DATASET_OPEN](img/PIPELINE_FOR_LOOKUP_COPY_SINK_DATASET_OPEN.png)
       
- 15. Switch to the Parameters tab in the Properties window of SinkDataset, and do the following steps:
+15. Switch to the Parameters tab in the Properties window of SinkDataset, and do the following steps:
  
-     - Click New in the Create/update parameters section.
-     - Enter SinkTableName for the name, and String for the type. This dataset takes SinkTableName as a parameter. The SinkTableName parameter is set by the pipeline dynamically at runtime. The ForEach activity in the pipeline iterates through a list of table names and passes the table name to this dataset in each iteration.
+    - Click New in the Create/update parameters section.
+    - Enter SinkTableName for the name, and String for the type. This dataset takes SinkTableName as a parameter. The SinkTableName parameter is set by the pipeline dynamically at runtime. The ForEach activity in the pipeline iterates through a list of table names and passes the table name to this dataset in each iteration.
      
-       ![PIPELINE_FOR_LOOKUP_COPY_SINK_DATASET_PARA](img/PIPELINE_FOR_LOOKUP_COPY_SINK_DATASET_PARA.png)
+      ![PIPELINE_FOR_LOOKUP_COPY_SINK_DATASET_PARA](img/PIPELINE_FOR_LOOKUP_COPY_SINK_DATASET_PARA.png)
  
- 16. 
+16. Switch back to the Connection tab in the Properties window and For Table property, click Add dynamic content.
+ 
+    - In the Add Dynamic Content window, select SinkTableName in the Parameters section.
+    - After clicking Finish, you see "@dataset().SinkTableName" as the table name.
+
+      ![PIPELINE_FOR_LOOKUP_COPY_SINK_DATASET_CONN](img/PIPELINE_FOR_LOOKUP_COPY_SINK_DATASET_CONN.png)
+
+17. Switch back to the Sink tab in the pipeline, and do the following steps:
+
+    - In the Dataset properties, for SinkTableName parameter, enter ```@{item().TABLE_NAME}```.
+    - Copy method, **upsert**
+    - In Key columnn select **+ New** and enter enter ```@{item().UpsertColumn}```.
+
+      ![PIPELINE_FOR_LOOKUP_COPY_SINK_CONFIG](img/PIPELINE_FOR_LOOKUP_COPY_SINK_CONFIG.png)
+
+18. Drag-and-drop the Stored Procedure activity under synapse from the Activities toolbox to the pipeline designer surface. Connect the Copy activity to the Stored Procedure activity.
+19. Select the Stored Procedure activity in the pipeline, and enter StoredProceduretoWriteWatermarkActivity for Name in the General tab of the Properties window.
+20. Switch to the Setting tab, and do the following steps:
+    - SQL pool: **SQLPool01**.
+    - Stored Procedure Parameters select: **[dbo].[usp_write_watermark]**
+    - Select **Import parameter**.
+      | Name | Type | Value |
+      | --- | --- | --- |
+      | LastModifiedtime | DateTime | @{activity('LookupNewWaterMark').output.firstRow.NewWatermarkvalue} |
+      | TableName | String | @{activity('LookupOldWaterMark').output.firstRow.TableName} |
+      
+      ![PIPELINE_FOR_PROCEDURE_SETTING](img/PIPELINE_FOR_PROCEDURE_SETTING.png)
