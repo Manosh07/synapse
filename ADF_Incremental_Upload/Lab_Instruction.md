@@ -101,7 +101,50 @@ In this excercise you will be peforming following task:
 ### Create source tables in your SQL database
 
 1. Open SQL Database, and connect to your SQL Server database.
-   ![Open SQL Database](img/SQL_DB_QUERY_EDITOR_OPEN.png)
+  
+  ![Open SQL Database](img/SQL_DB_QUERY_EDITOR_OPEN.png)
    
 2. Run the following SQL command against your database to create tables named customer_table and project_table:.
-   ![Open SQL Database](img/SQL_DB_QUERY_EDITOR_RUN_QUERY.png)
+  
+  ![Open SQL Database](img/SQL_DB_QUERY_EDITOR_RUN_QUERY.png)
+  
+  ```
+  create table customer_table
+(
+    PersonID int,
+    Name varchar(255),
+    LastModifytime datetime
+);
+
+create table project_table
+(
+    Project varchar(255),
+    Creationtime datetime
+);
+
+INSERT INTO customer_table
+(PersonID, Name, LastModifytime)
+VALUES
+(1, 'John','9/1/2017 12:56:00 AM'),
+(2, 'Mike','9/2/2017 5:23:00 AM'),
+(3, 'Alice','9/3/2017 2:36:00 AM'),
+(4, 'Andy','9/4/2017 3:21:00 AM'),
+(5, 'Anny','9/5/2017 8:06:00 AM');
+
+INSERT INTO project_table
+(Project, Creationtime)
+VALUES
+('project1','1/1/2015 0:00:00 AM'),
+('project2','2/2/2016 1:23:00 AM'),
+('project3','3/4/2017 5:16:00 AM');
+  ```
+
+### Create destination tables in synpase dedicated sql pool
+
+1. Open Dedicated SQL Pool, and connect to your SQL Server database.
+   
+   ![Run Query](img/SYNPASE_POOL_QUERY_EDITOR_OPEN.png)
+   
+2. Run the following SQL command against your Dedicated SQL Pool to create tables named customer_table and project_table:.
+   
+   ![Run Query](img/SYNPASE_POOL_QUERY_EDITOR_RUN_QUERY.png)
