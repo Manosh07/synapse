@@ -25,6 +25,8 @@ d. Create a StoredProcedure activity that updates the watermark value for the pi
 ## Here is the high-level solution diagram:
 ![Select Standard](img/high-level-solution-diagram.png)
 
+Reference: [Micrsoft Pages](https://docs.microsoft.com/en-us/azure/data-factory/tutorial-incremental-copy-multiple-tables-portal)
+
 ### Task : Create and configure a SQL Database instance.
 
 1. In the Azure portal, navigate to the **+ Create a resource** blade.
