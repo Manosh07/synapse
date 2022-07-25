@@ -233,7 +233,7 @@ END
 
 2. In the General panel under Properties, specify IncrementalCopyPipeline for Name. Then collapse the panel by clicking the Properties icon in the top-right corner.
 
-. Switch to the Settings tab, click + New to create a dataset as shown below
+3. Switch to the Settings tab, click + New to create a dataset as shown below
   
    ![PIPELINE_TABLE_LIST_LOOKUP_ACTIVITY_SETTING_NEW_DATASET](img/PIPELINE_TABLE_LIST_LOOKUP_ACTIVITY_SETTING_NEW_DATASET.png)
 	
@@ -256,4 +256,54 @@ END
  
       ![PIPELINE_TABLE_LIST_LOOKUP_ACTIVITY_SETTING_FIRSTROW](img/PIPELINE_TABLE_LIST_LOOKUP_ACTIVITY_SETTING_FIRSTROW.png)
 
-3. In the Activities toolbox, expand Iteration & Conditionals, and drag-drop the ForEach activity to the pipeline designer surface. In the General tab of the Properties window, enter LookupTableList.
+4. In the Activities toolbox, expand Iteration & Conditionals, and drag-drop the ForEach activity to the pipeline designer surface. In the General tab of the Properties window, enter IterateSQLTables.
+    
+    ![PIPELINE_FOREACH_ACTIVITY_GENERAL](img/PIPELINE_FOREACH_ACTIVITY_GENERAL.png)
+
+5. Switch to the Settings tab, and enter @activity('LookupTableList').output.value for Items. The ForEach activity iterates through a list of tables and performs the incremental copy operation
+
+   ![PIPELINE_FOREACH_ACTIVITY_SETTING](img/PIPELINE_FOREACH_ACTIVITY_SETTING.png)
+
+6. Select the ForEach activity in the pipeline if it isn't already selected. Click the Edit (Pencil icon) button.
+7. In the Activities toolbox, expand General, drag-drop the Lookup activity to the pipeline designer surface, and enter LookupOldWaterMarkActivity for Name.
+   
+   ![PIPELINE_FOREACH_LOOKUP_ACTIVITY_GENERAL](img/PIPELINE_FOREACH_LOOKUP_ACTIVITY_GENERAL.png)
+   
+8. Switch to the Settings tab, click + New to create a dataset as mention below:
+
+   - Search for synpase then select Azure Synpase Analytics and click continue.
+   - Set properties:
+     - Name: ```WatermarkDataset```
+     - Linked Service Select: **sqlpool01**
+     - Table Name: ```watermarktable```
+     - Click" **Ok**
+       
+       ![PIPELINE_FOREACH_LOOKUP_ACTIVITY_SETTING_PROP](img/PIPELINE_FOREACH_LOOKUP_ACTIVITY_SETTING_PROP.png)
+       
+   - First row only: **Checked**.
+   - Select Query for Use Query.
+   - Enter the following SQL query for Query.
+    
+     ```select * from watermarktable where TableName  =  '@{item().TableName}'```
+    
+     ![PIPELINE_FOREACH_LOOKUP_ACTIVITY_SETTING_PROP_1](img/PIPELINE_FOREACH_LOOKUP_ACTIVITY_SETTING_PROP_1.png)
+
+9. Drag-drop the Lookup activity from the Activities toolbox, and enter LookupNewWaterMarkActivity for Name.
+10. Switch to the Settings tab, click + New to create a dataset as mention below:.
+
+    - Search for sql database then select Azure SQL Database and click continue.
+    - Set properties:
+      - Name: ```SourceDataset```
+      - Linked Service Select: **AzureSqlDatabase**
+      - Table Name: **You do not select a table here**. 
+      	> **Note**: The Copy activity in the pipeline uses a SQL query to load the data rather than load the entire table.
+      - Click" **Ok**
+       
+        ![PIPELINE_FOR_LOOKUP_ACT2_DATASET_PROP](img/PIPELINE_FOR_LOOKUP_ACT2_DATASET_PROP.png)
+       
+   - Select Query for Use Query.
+   - Enter the following SQL query for Query.
+   
+     ```select MAX(@{item().WaterMark_Column}) as NewWatermarkvalue from @{item().TABLE_NAME}```
+     
+     ![PIPELINE_FOR_LOOKUP_ACT2_SETTING](img/PIPELINE_FOR_LOOKUP_ACT2_SETTING.png)
