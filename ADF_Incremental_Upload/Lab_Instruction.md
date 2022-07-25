@@ -31,7 +31,7 @@
         
         Step 1:
         
-        ![Select Standard](../img/SQL_DB_COMP_STORAGE.png)
+        ![Select Standard](img/SQL_DB_COMP_STORAGE.png)
         
         Step 2:
         
@@ -39,15 +39,15 @@
         
         Step 3:
         
-        ![Creating a server instance in the Azure portal](../img/SQL_DB_SERV_TIER_DTU.png)
+        ![Creating a server instance in the Azure portal](img/SQL_DB_SERV_TIER_DTU.png)
 
 	- In the **Networking tab**
 
-		![Click on Compute + Storage configure option](../img/SQL_DB_NW.png)
+		![Click on Compute + Storage configure option](img/SQL_DB_NW.png)
 	
     - Click on the  **Additional setting** tab, click **Sample** . The AdventureworksLT sample database is selected automatically. 
     
-		![Click on Compute + Storage configure option](../img/SQL_DB_ADD_SETTING.png)
+		![Click on Compute + Storage configure option](img/SQL_DB_ADD_SETTING.png)
 
 5. In the **Create SQL Database** blade, click **Review + create**.
 
