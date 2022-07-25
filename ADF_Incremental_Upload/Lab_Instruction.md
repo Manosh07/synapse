@@ -12,7 +12,7 @@
     
         - **Subscription**: the name of the subscription you are using in this lab
 
-        - **Resource group**: **data-engineering-synapse-xxxxx**.
+        - **Resource group**: **synapse-xxxxx**, 'xxxxx' is some random suffix
     
     - In the Database details section, type in the following information
     
@@ -31,27 +31,23 @@
         
         Step 1:
         
-        ![Click on Compute + Storage configure option](../data/images/CreateSQLDatabase-MicrosoftAzure-000123.png)
+        ![Select Standard](../img/SQL_DB_COMP_STORAGE.png)
         
         Step 2:
         
-        ![Select Standard](../data/images/CreateSQLDatabase-MicrosoftAzure000124.png)
+        ![Creating a server instance in the Azure portal](../img/SQL_DB_SERV_TIER.png)
         
         Step 3:
         
-        ![Creating a server instance in the Azure portal](../data/images/ConfigureMicrosoftAzure-000125.png)
-        
-        Step 4:
-        
-        ![Creating a server instance in the Azure portal](../data/images/Configure-MicrosoftAzure-000126.png)
+        ![Creating a server instance in the Azure portal](../img/SQL_DB_SERV_TIER_DTU.png)
 
 	- In the **Networking tab**
 
-		![Click on Compute + Storage configure option](../data/images/Window-000129.png)
+		![Click on Compute + Storage configure option](../img/SQL_DB_NW.png)
 	
     - Click on the  **Additional setting** tab, click **Sample** . The AdventureworksLT sample database is selected automatically. 
     
-		![Click on Compute + Storage configure option](../data/images/Window-000130.png)
+		![Click on Compute + Storage configure option](../img/SQL_DB_ADD_SETTING.png)
 
 5. In the **Create SQL Database** blade, click **Review + create**.
 
