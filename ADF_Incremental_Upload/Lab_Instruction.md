@@ -323,7 +323,7 @@ END
     - Select Query for Use Query.
     - Enter the following SQL query for Query.
       ```
-      select * from @{item().TABLE_NAME} where @{item().WaterMark_Column} > '@{activity('LookupOldWaterMarkActivity').output.firstRow.WatermarkValue}' and @{item().WaterMark_Column} <= '@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}'
+      select * from @{item().TableName} where @{item().WaterMarkColumn} > '@{activity('LookupOldWaterMarkActivity').output.firstRow.WatermarkValue}' and @{item().WaterMarkColumn} <= '@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}'
       ```
       ![PIPELINE_FOR_LOOKUP_COPY_SOURCE_DATASET](img/PIPELINE_FOR_LOOKUP_COPY_SOURCE_DATASET.png)
       
@@ -369,8 +369,8 @@ END
     - Select **Import parameter**.
       | Name | Type | Value |
       | --- | --- | --- |
-      | LastModifiedtime | DateTime | @{activity('LookupNewWaterMark').output.firstRow.NewWatermarkvalue} |
-      | TableName | String | @{activity('LookupOldWaterMark').output.firstRow.TableName} |
+      | LastModifiedtime | DateTime | ```@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}``` |
+      | TableName | String | ```@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}``` |
       
       ![PIPELINE_FOR_PROCEDURE_SETTING](img/PIPELINE_FOR_PROCEDURE_SETTING.png)
 
