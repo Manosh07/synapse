@@ -26,9 +26,9 @@
             - **Confirm Password**: **Pa55w.rd**
             - click on **OK**
          
-         - Want to use SQL elastic pool?  **No**
+         - Want to use SQL elastic pool?:  **No**
          
-         - Workload environment **Development**
+         - Workload environment: **Development**
         
         - **Cmpute + Storage**: Select Standard Service Tier
         
