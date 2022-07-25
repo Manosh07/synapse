@@ -382,7 +382,7 @@ END
 On the toolbar for the pipeline, click Add trigger, and click Trigger Now.
 
 ### Review the results
-In SQL Server Management Studio, run the following queries against the target SQL database to verify that the data was copied from source tables to destination tables:
+Create a SQL Script in Synpase under develop hub, run the following queries against the target SQL Pool to verify that the data was copied from source tables to destination tables:
 
 **Query**
 ``` 
@@ -437,3 +437,46 @@ VALUES
 
 ### Rerun the pipeline
 On the toolbar for the pipeline, click Add trigger, and click Trigger Now.
+
+
+## Review the final results
+Create a SQL Script in Synpase under develop hub, run the following queries against the target SQL Pool to verify that the data was copied from source tables to destination tables:
+
+**Query**
+``` 
+select * from customer_table
+```
+
+**Output**
+| PersonID |Name | LastModifytime |
+| - | ------|------------------------ |
+| 1	| John	| 2017-09-01 00:56:00.000 |
+| 2	| Mike	| 2017-09-02 05:23:00.000 |
+| 3	| NewName | 2017-09-08 00:00:00.000 |
+| 4	| Andy	| 2017-09-04 03:21:00.000 |
+| 5	| Anny	| 2017-09-05 08:06:00.000 |
+
+**Query**
+``` 
+select * from project_table
+```
+
+**Output**
+| Project | Creationtime |
+| ------- | ------------ |
+| project1	| 2015-01-01 00:00:00.000 |
+| project2	| 2016-02-02 01:23:00.000 |
+| project3	| 2017-03-04 05:16:00.000 |
+| NewProject    | 2017-10-01 00:00:00.000 |
+
+**Query**
+``` 
+select * from watermarktable
+```
+
+**Output**
+| TableName	| WatermarkValue |
+| --------- | -------------- |
+| customer_table | 2017-09-08 00:00:00.000 |
+| project_table | 2017-10-01 00:00:00.000 |
+Notice that the watermark values for both tables were updated.
