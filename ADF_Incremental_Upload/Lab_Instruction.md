@@ -233,9 +233,7 @@ END
 
 2. In the General panel under Properties, specify IncrementalCopyPipeline for Name. Then collapse the panel by clicking the Properties icon in the top-right corner.
 
-3. In the Activities toolbox, expand Iteration & Conditionals, and drag-drop the ForEach activity to the pipeline designer surface. In the General tab of the Properties window, enter LookupTableList.
-
-4. Switch to the Settings tab, click + New to create a dataset as shown below
+. Switch to the Settings tab, click + New to create a dataset as shown below
   
    ![PIPELINE_TABLE_LIST_LOOKUP_ACTIVITY_SETTING_NEW_DATASET](img/PIPELINE_TABLE_LIST_LOOKUP_ACTIVITY_SETTING_NEW_DATASET.png)
 	
@@ -257,3 +255,5 @@ END
     - Use query: **Table**
  
       ![PIPELINE_TABLE_LIST_LOOKUP_ACTIVITY_SETTING_FIRSTROW](img/PIPELINE_TABLE_LIST_LOOKUP_ACTIVITY_SETTING_FIRSTROW.png)
+
+3. In the Activities toolbox, expand Iteration & Conditionals, and drag-drop the ForEach activity to the pipeline designer surface. In the General tab of the Properties window, enter LookupTableList.
