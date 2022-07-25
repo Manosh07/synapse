@@ -141,10 +141,58 @@ VALUES
 
 ### Create destination tables in synpase dedicated sql pool
 
-1. Open Dedicated SQL Pool, and connect to your SQL Server database.
-   
-   ![Run Query](img/SYNPASE_POOL_QUERY_EDITOR_OPEN.png)
+1. In develop hub create a sql script.
+
+   ![Run Query](img/SYNPASE_POOL_SQL_SCRIPT.png)
    
 2. Run the following SQL command against your Dedicated SQL Pool to create tables named customer_table and project_table:.
    
-   ![Run Query](img/SYNPASE_POOL_QUERY_EDITOR_RUN_QUERY.png)
+   ![Run Query](img/SYNPASE_POOL_EXECUTE_SQL_SCRIPT.png)
+   
+```
+create table customer_table
+(
+    PersonID int,
+    Name varchar(255),
+    LastModifytime datetime
+);
+
+create table project_table
+(
+    Project varchar(255),
+    Creationtime datetime
+);
+```
+
+### Create a stored procedure in your database
+
+1. Run the following command to create a stored procedure in your Dedicated SQL Pool. This stored procedure updates the watermark value after every pipeline run
+```
+create table watermarktable
+(
+
+    TableName varchar(255),
+    WatermarkValue datetime
+);
+```
+3. Insert initial watermark values for both source tables into the watermark table.
+```
+INSERT INTO watermarktable VALUES ('customer_table','1/1/2010 12:00:00 AM')
+INSERT INTO watermarktable VALUES ('project_table','1/1/2010 12:00:00 AM')
+```
+
+### Create a stored procedure in your Dedicated SQL Pool
+
+Run the following command to create a stored procedure in your Dedicated SQL Pool. This stored procedure updates the watermark value after every pipeline run.
+```
+CREATE PROCEDURE usp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
+AS
+
+BEGIN
+
+UPDATE watermarktable
+SET [WatermarkValue] = @LastModifiedtime 
+WHERE [TableName] = @TableName
+
+END
+```
