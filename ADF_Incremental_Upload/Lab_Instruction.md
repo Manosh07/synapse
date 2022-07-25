@@ -109,7 +109,7 @@ In this excercise you will be peforming following task:
   ![Open SQL Database](img/SQL_DB_QUERY_EDITOR_RUN_QUERY.png)
   
   ```
-  create table customer_table
+create table customer_table
 (
     PersonID int,
     Name varchar(255),
@@ -156,12 +156,28 @@ create table customer_table
     Name varchar(255),
     LastModifytime datetime
 );
+GO
 
 create table project_table
 (
     Project varchar(255),
     Creationtime datetime
 );
+GO
+
+create table table_list
+(
+    TableName varchar(255),
+    WaterMarkColumn varchar(255),
+	UpsertColumn varchar(255)
+);
+GO
+
+INSERT INTO table_list (TableName, WaterMarkColumn, UpsertColumn) VALUES ('customer_table', 'LastModifytime', 'PersonID')
+GO
+
+INSERT INTO table_list (TableName, WaterMarkColumn, UpsertColumn) VALUES ('project_table','Creationtime', 'Project')
+GO
 ```
 
 ### Create a stored procedure in your database
@@ -196,3 +212,48 @@ WHERE [TableName] = @TableName
 
 END
 ```
+
+## Task 3 : Create and configure a pipeline.
+
+### Create SQL Database linked service
+
+1. Under manage hub -> Linked Service -> + New -> Search for SQL Database -> Select SQL Database -> Click Continue
+
+   ![SYNPASE_POOL_SQL_DB_Linked_SERVICE](img/SYNPASE_POOL_SQL_DB_Linked_SERVICE.png)
+   
+2. Provide the required configuration details as mentioned
+
+   ![SYNPASE_POOL_SQL_DB_Linked_SERVICE_CONFIG_1](img/SYNPASE_POOL_SQL_DB_Linked_SERVICE_1.png)
+   ![SYNPASE_POOL_SQL_DB_Linked_SERVICE_CONFIG_2](img/SYNPASE_POOL_SQL_DB_Linked_SERVICE_2.png)
+   
+
+### Create a Pipeline
+
+1. In the left pane, click + (plus), and click Pipeline.
+
+2. In the General panel under Properties, specify IncrementalCopyPipeline for Name. Then collapse the panel by clicking the Properties icon in the top-right corner.
+
+3. In the Activities toolbox, expand Iteration & Conditionals, and drag-drop the ForEach activity to the pipeline designer surface. In the General tab of the Properties window, enter LookupTableList.
+
+4. Switch to the Settings tab, click + New to create a dataset as shown below
+  
+   ![PIPELINE_TABLE_LIST_LOOKUP_ACTIVITY_SETTING_NEW_DATASET](img/PIPELINE_TABLE_LIST_LOOKUP_ACTIVITY_SETTING_NEW_DATASET.png)
+	
+  - Select Azure Synapse Analytics
+  
+    ![PIPELINE_TABLE_LIST_LOOKUP_ACTIVITY_SETTING_NEW_DATASET_SYNAPSE](img/PIPELINE_TABLE_LIST_LOOKUP_ACTIVITY_SETTING_NEW_DATASET_SYNAPSE.png)
+  
+  - Set properties
+    - Dataset Name: ```AzureSynapseAnalyticsTableList```
+    - Select Linked Service: **sqlpool01**
+    - Select Table Name: **table_list**
+
+    ![PIPELINE_TABLE_LIST_LOOKUP_ACTIVITY_SETTING_NEW_DATASET_PROP](img/PIPELINE_TABLE_LIST_LOOKUP_ACTIVITY_SETTING_NEW_DATASET_PROP.png)
+
+  - Click: **Ok**
+  
+  - Under setting tab of Lookup activity
+    - Select **Frist Row only**: Unchecked
+    - Use query: **Table**
+ 
+      ![PIPELINE_TABLE_LIST_LOOKUP_ACTIVITY_SETTING_FIRSTROW](img/PIPELINE_TABLE_LIST_LOOKUP_ACTIVITY_SETTING_FIRSTROW.png)
