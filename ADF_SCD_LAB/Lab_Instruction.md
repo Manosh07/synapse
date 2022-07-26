@@ -82,7 +82,7 @@ In this task, you create a mapping data flow to create a Type 1 SCD.
 
 7. Under `Source settings`, configure the following properties:
 
-    - **Output stream name**: Enter `AdventureworksLT`
+    - **Output stream name**: Enter `SourceDB`
     - **Source type**: Select `Dataset`
     - **Options**: Check `Allow schema drift` and leave the other options unchecked
     - **Sampling**: Select `Disable`
