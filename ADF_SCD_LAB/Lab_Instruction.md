@@ -56,11 +56,11 @@ In this task, you create a mapping data flow to create a Type 1 SCD.
 
 1. Navigate to the **Develop** hub.
 
-    ![Develop hub.](img/develop-hub.png "Develop hub")
+    ![Develop hub.](img/develop-hub.png)
 
 2. Select **+**, then select **Data flow**.
 
-    ![The plus button and data flow menu item are highlighted.](img/new-data-flow.png "New data flow")
+    ![The plus button and data flow menu item are highlighted.](img/new-data-flow.png)
 
 3. In the properties pane of the new data flow, enter `UpdateCustomerDimension` in the **Name** field **(1)**, then select the **Properties** button **(2)** to hide the properties pane.
 
