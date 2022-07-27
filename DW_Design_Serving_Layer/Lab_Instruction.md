@@ -7,7 +7,7 @@ Before starting this lab, ensure you have successfully completed the setup steps
 
 1. Step 1
 
-    ![The manage hub is highlighted.](img/manage-hub.png)
+    ![The manage hub is highlighted.](img/create-container.png)
 
 2. Step 2
     ![Create directory](img/Alchemy-Word-000117.png)
