@@ -119,6 +119,11 @@ Before you begin, we need to create a few new tables and load them with data.
         CLUSTERED COLUMNSTORE INDEX
     )
     GO
+    ```
+    
+    Now load the data by replacing the **storage-account-name** from the below code:
+    
+    ```
 
     COPY INTO Category 
     FROM 'https://<storage-account-name>.blob.core.windows.net/data/books/Category.csv'
