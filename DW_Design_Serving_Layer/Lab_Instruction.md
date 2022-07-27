@@ -13,7 +13,7 @@ Before starting this lab, ensure you have successfully completed the setup steps
 
 ![Create directory](img/Alchemy-Word-000117.png)
 
-**Step 3**: Download awdata file and upload to the awdata directory [Click here to download](https://github.com/pankajcloudthat/synapse/tree/main/data) and then Click on upload
+**Step 3**: Download awdata file and upload to the awdata directory [Click here to download](https://github.com/pankajcloudthat/synapse/tree/main/DW_Design_Serving_Layer/data) and then Click on upload
 
 **Step 4**
 
