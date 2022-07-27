@@ -688,6 +688,8 @@ In this task, you load the dimension and fact tables with data from a public dat
 Generate the SAS Key for the stoage account got asadatalakexxxxx storage account and generate the SAS Key
 
  ![The SAS Key.](img/Mail-000128.png)
+ 
+ ![The SAS Key.](img/Generate-SAS-Token.png)
 
 1. Paste **and execute** the following into the query window to create a master key encryption, database scoped credential, and external data source that accesses the public blob storage account that contains the source data:
 
