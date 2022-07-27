@@ -48,7 +48,7 @@ Before you begin, we need to create a few new tables and load them with data.
 
     ![The connect to option is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-connect.png "Query toolbar")
 
-5. In the query window, replace the script with the following to use the `OVER` clause with data from the `wwi_security.Sale` table:
+5. In the query window, to create some tables:
 
     ```sql
     IF OBJECT_ID(N'[dbo].[Category]', N'U') IS NOT NULL
@@ -121,7 +121,7 @@ Before you begin, we need to create a few new tables and load them with data.
     GO
 
     COPY INTO Category 
-    FROM 'https://solliancepublicdata.blob.core.windows.net/dataengineering/dp-203/books/Category.csv'
+    FROM 'https://<storage-account-name>.blob.core.windows.net/data/books/Category.csv'
     WITH (
         FILE_TYPE = 'CSV',
         FIRSTROW = 2
@@ -129,7 +129,7 @@ Before you begin, we need to create a few new tables and load them with data.
     GO
 
     COPY INTO Books 
-    FROM 'https://solliancepublicdata.blob.core.windows.net/dataengineering/dp-203/books/Books.csv'
+    FROM 'https://<storage-account-name>.blob.core.windows.net/data/books/Books.csv'
     WITH (
         FILE_TYPE = 'CSV',
         FIRSTROW = 2
@@ -137,7 +137,7 @@ Before you begin, we need to create a few new tables and load them with data.
     GO
 
     COPY INTO BookConsumption 
-    FROM 'https://solliancepublicdata.blob.core.windows.net/dataengineering/dp-203/books/BookConsumption.csv'
+    FROM 'https://<storage-account-name>.blob.core.windows.net/data/books/BookConsumption.csv'
     WITH (
         FILE_TYPE = 'CSV',
         FIRSTROW = 2
@@ -145,7 +145,7 @@ Before you begin, we need to create a few new tables and load them with data.
     GO
 
     COPY INTO BookList 
-    FROM 'https://solliancepublicdata.blob.core.windows.net/dataengineering/dp-203/books/BookList.csv'
+    FROM 'https://<storage-account-name>.blob.core.windows.net/data/books/BookList.csv'
     WITH (
         FILE_TYPE = 'CSV',
         FIRSTROW = 2
