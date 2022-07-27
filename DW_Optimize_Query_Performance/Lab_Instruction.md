@@ -16,15 +16,15 @@ This lab uses the dedicated SQL pool. As a first step, make sure it is not pause
 
 2. Select the **Manage** hub.
 
-    ![The manage hub is highlighted.](media/manage-hub.png "Manage hub")
+    ![The manage hub is highlighted.](img/manage-hub.png "Manage hub")
 
 3. Select **SQL pools** in the left-hand menu **(1)**. If the dedicated SQL pool is paused, hover over the name of the pool and select **Resume (2)**.
 
-    ![The resume button is highlighted on the dedicated SQL pool.](media/resume-dedicated-sql-pool.png "Resume")
+    ![The resume button is highlighted on the dedicated SQL pool.](img/resume-dedicated-sql-pool.png "Resume")
 
 4. When prompted, select **Resume**. It will take a minute or two to resume the pool.
 
-    ![The resume button is highlighted.](media/resume-dedicated-sql-pool-confirm.png "Resume")
+    ![The resume button is highlighted.](img/resume-dedicated-sql-pool-confirm.png "Resume")
 
 > **Wait** until the dedicated SQL pool resumes.
 
@@ -38,15 +38,15 @@ Before you begin, we need to create a few new tables and load them with data.
 
 2. Select the **Develop** hub.
 
-    ![The develop hub is highlighted.](media/develop-hub.png "Develop hub")
+    ![The develop hub is highlighted.](img/develop-hub.png "Develop hub")
 
 3. From the **Develop** menu, select the **+** button **(1)** and choose **SQL Script (2)** from the context menu.
 
-    ![The SQL script context menu item is highlighted.](media/synapse-studio-new-sql-script.png "New SQL script")
+    ![The SQL script context menu item is highlighted.](img/synapse-studio-new-sql-script.png "New SQL script")
 
 4. In the toolbar menu, connect to the **SQLPool01** database to execute the query.
 
-    ![The connect to option is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-connect.png "Query toolbar")
+    ![The connect to option is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-connect.png "Query toolbar")
 
 5. In the query window, replace the script with the following to use the `OVER` clause with data from the `wwi_security.Sale` table:
 
@@ -155,7 +155,7 @@ Before you begin, we need to create a few new tables and load them with data.
 
 6. Select **Run** from the toolbar menu to execute the SQL command.
 
-    ![The run button is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-run.png "Run")
+    ![The run button is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-run.png "Run")
 
     After a few seconds, you should see that the query successfully completed.
 
@@ -171,15 +171,15 @@ One of the key components of window functions is the **`OVER`** clause. This cla
 
 1. Select the **Develop** hub.
 
-    ![The develop hub is highlighted.](media/develop-hub.png "Develop hub")
+    ![The develop hub is highlighted.](img/develop-hub.png "Develop hub")
 
 2. From the **Develop** menu, select the **+** button **(1)** and choose **SQL Script (2)** from the context menu.
 
-    ![The SQL script context menu item is highlighted.](media/synapse-studio-new-sql-script.png "New SQL script")
+    ![The SQL script context menu item is highlighted.](img/synapse-studio-new-sql-script.png "New SQL script")
 
 3. In the toolbar menu, connect to the **SQLPool01** database to execute the query.
 
-    ![The connect to option is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-connect.png "Query toolbar")
+    ![The connect to option is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-connect.png "Query toolbar")
 
 4. In the query window, replace the script with the following to use the `OVER` clause with data from the `wwi_security.Sale` table:
 
@@ -196,11 +196,11 @@ One of the key components of window functions is the **`OVER`** clause. This cla
 
 5. Select **Run** from the toolbar menu to execute the SQL command.
 
-    ![The run button is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-run.png "Run")
+    ![The run button is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-run.png "Run")
 
     When we use `PARTITION BY` with the `OVER` clause **(1)**, we divide the query result set into partitions. The window function is applied to each partition separately and computation restarts for each partition.
 
-    ![The script output is shown.](media/over-partition.png "SQL script")
+    ![The script output is shown.](img/over-partition.png "SQL script")
 
     The script we executed uses the OVER clause with ROW_NUMBER function **(1)** to display a row number for each row within a partition. The partition in our case is the `Region` column. The ORDER BY clause **(2)** specified in the OVER clause orders the rows in each partition by the column `Quantity`. The ORDER BY clause in the SELECT statement determines the order in which the entire query result set is returned.
 
@@ -230,11 +230,11 @@ Now let's use aggregate functions with our window by expanding on our query that
 
 2. Select **Run** from the toolbar menu to execute the SQL command.
 
-    ![The run button is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-run.png "Run")
+    ![The run button is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-run.png "Run")
 
     In our query, we added the `SUM`, `AVG`, `COUNT`, `MIN`, and `MAX` aggregate functions. Using the OVER clause is more efficient than using subqueries.
 
-    ![The script output is shown.](media/over-partition-aggregates.png "SQL script")
+    ![The script output is shown.](img/over-partition-aggregates.png "SQL script")
 
 #### Task 2.3: Analytic functions
 
@@ -263,9 +263,9 @@ To do this, you decide to build window functions that use the `PERCENTILE_CONT` 
 
 2. Select **Run** from the toolbar menu to execute the SQL command.
 
-    ![The run button is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-run.png "Run")
+    ![The run button is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-run.png "Run")
 
-    ![The percentile results are displayed.](media/percentile.png "Percentile")
+    ![The percentile results are displayed.](img/percentile.png "Percentile")
 
     In this query, we use **PERCENTILE_CONT (1)** and **PERCENTILE_DISC (2)** to find the median number of downloads in each book category. These functions may not return the same value. PERCENTILE_CONT interpolates the appropriate value, which may or may not exist in the data set, while PERCENTILE_DISC always returns an actual value from the set. To explain further, PERCENTILE_DISC computes a specific percentile for sorted values in an entire rowset or within a rowset's distinct partitions.
 
@@ -299,9 +299,9 @@ To do this, you decide to build window functions that use the `PERCENTILE_CONT` 
 
 4. Select **Run** from the toolbar menu to execute the SQL command.
 
-    ![The run button is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-run.png "Run")
+    ![The run button is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-run.png "Run")
 
-    ![The lag results are displayed.](media/lag.png "LAG function")
+    ![The lag results are displayed.](img/lag.png "LAG function")
 
     In this query, we use the **LAG function (1)** to return the **difference in sales (2)** for a specific product over peak sales hours (8-20). We also calculate the difference in sales from one row to the next **(3)**. Notice that because there is no lag value available for the first row, the default of zero (0) is returned.
 
@@ -328,9 +328,9 @@ To achieve this, you use ROWS in combination with UNBOUNDED PRECEDING to limit t
 
 2. Select **Run** from the toolbar menu to execute the SQL command.
 
-    ![The run button is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-run.png "Run")
+    ![The run button is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-run.png "Run")
 
-    ![The rows results are displayed.](media/rows-unbounded-preceding.png "ROWS with UNBOUNDED PRECEDING")
+    ![The rows results are displayed.](img/rows-unbounded-preceding.png "ROWS with UNBOUNDED PRECEDING")
 
     In this query, we use the `FIRST_VALUE` analytic function to retrieve the book title with the fewest downloads, as indicated by the **`ROWS UNBOUNDED PRECEDING`** clause over the `Country` partition **(1)**. The `UNBOUNDED PRECEDING` option set the window start to the first row of the partition, giving us the title of the book with the fewest downloads for the country within the partition.
 
@@ -352,7 +352,7 @@ To understand their requirements, let's first execute a distinct count over the 
 
 2. Select **Run** from the toolbar menu to execute the SQL command.
 
-    ![The run button is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-run.png "Run")
+    ![The run button is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-run.png "Run")
 
     The query takes between 50 and 70 seconds to execute. That is expected, as distinct counts are one of the most difficult types of queries to optimize.
 
@@ -366,7 +366,7 @@ To understand their requirements, let's first execute a distinct count over the 
 
 4. Select **Run** from the toolbar menu to execute the SQL command.
 
-    ![The run button is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-run.png "Run")
+    ![The run button is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-run.png "Run")
 
     The query should take much less time to execute. The result isn't quite the same, for example, it may be `1,001,619`.
 
@@ -392,15 +392,15 @@ Tailwind Traders has asked you if there is a way to mark queries executed by the
 
 1. Select the **Develop** hub.
 
-    ![The develop hub is highlighted.](media/develop-hub.png "Develop hub")
+    ![The develop hub is highlighted.](img/develop-hub.png "Develop hub")
 
 2. From the **Develop** menu, select the **+** button **(1)** and choose **SQL Script (2)** from the context menu.
 
-    ![The SQL script context menu item is highlighted.](media/synapse-studio-new-sql-script.png "New SQL script")
+    ![The SQL script context menu item is highlighted.](img/synapse-studio-new-sql-script.png "New SQL script")
 
 3. In the toolbar menu, connect to the **SQLPool01** database to execute the query.
 
-    ![The connect to option is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-connect.png "Query toolbar")
+    ![The connect to option is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-connect.png "Query toolbar")
 
 4. In the query window, replace the script with the following to confirm that there are no queries currently being run by users logged in as `asa.sql.workload01`, representing the CEO of the organization or `asa.sql.workload02` representing the data analyst working on the project:
 
@@ -418,17 +418,17 @@ Tailwind Traders has asked you if there is a way to mark queries executed by the
 
 5. Select **Run** from the toolbar menu to execute the SQL command.
 
-    ![The run button is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-run.png "Run")
+    ![The run button is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-run.png "Run")
 
     Now that we have confirmed that there are no running queries, we need to flood the system with queries and see what happens for `asa.sql.workload01` and `asa.sql.workload02`. To do this, we'll run a Synapse Pipeline which triggers queries.
 
 6. Select the **Integrate** hub.
 
-    ![The integrate hub is highlighted.](media/integrate-hub.png "Integrate hub")
+    ![The integrate hub is highlighted.](img/integrate-hub.png "Integrate hub")
 
 7. Select the **Lab 08 - Execute Data Analyst and CEO Queries** pipeline **(1)**, which will run / trigger the `asa.sql.workload01` and `asa.sql.workload02` queries. Select **Add trigger (2)**, then **Trigger now (3)**. In the dialog that appears, select **OK**.
 
-    ![The add trigger and trigger now menu items are highlighted.](media/trigger-data-analyst-and-ceo-queries-pipeline.png "Add trigger")
+    ![The add trigger and trigger now menu items are highlighted.](img/trigger-data-analyst-and-ceo-queries-pipeline.png "Add trigger")
 
     > **Note**: Leave this tab open since you will come back to this pipeline again.
 
@@ -444,11 +444,11 @@ Tailwind Traders has asked you if there is a way to mark queries executed by the
 
 9. Select **Run** from the toolbar menu to execute the SQL command.
 
-    ![The run button is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-run.png "Run")
+    ![The run button is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-run.png "Run")
 
     You should see an output similar to the following:
 
-    ![SQL query results.](media/sql-query-2-results.png "SQL script")
+    ![SQL query results.](img/sql-query-2-results.png "SQL script")
 
     > **Note**: This query could take over a minute to execute. If it takes longer than this, cancel the query and run it again.
 
@@ -470,7 +470,7 @@ Tailwind Traders has asked you if there is a way to mark queries executed by the
 
 11. Select **Run** from the toolbar menu to execute the SQL command.
 
-    ![The run button is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-run.png "Run")
+    ![The run button is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-run.png "Run")
 
 12. Let's flood the system again with queries and see what happens this time for `asa.sql.workload01` and `asa.sql.workload02` queries. To do this, we'll run a Synapse Pipeline which triggers queries. **Select** the `Integrate` Tab, **run** the **Lab 08 - Execute Data Analyst and CEO Queries** pipeline, which will run / trigger the `asa.sql.workload01` and `asa.sql.workload02` queries.
 
@@ -486,21 +486,21 @@ Tailwind Traders has asked you if there is a way to mark queries executed by the
 
 14. Select **Run** from the toolbar menu to execute the SQL command.
 
-    ![The run button is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-run.png "Run")
+    ![The run button is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-run.png "Run")
 
     You should see an output similar to the following:
 
-    ![SQL query results.](media/sql-query-4-results.png "SQL script")
+    ![SQL query results.](img/sql-query-4-results.png "SQL script")
 
     Notice that the queries executed by the `asa.sql.workload01` user have a **high** importance.
 
 15. Select the **Monitor** hub.
 
-    ![The monitor hub is highlighted.](media/monitor-hub.png "Monitor hub")
+    ![The monitor hub is highlighted.](img/monitor-hub.png "Monitor hub")
 
 16. Select **Pipeline runs (1)**, and then select **Cancel recursive (2)** for each running Lab 08 pipelines, marked **In progress (3)**. This will help speed up the remaining tasks.
 
-    ![The cancel recursive option is shown.](media/cancel-recursive.png "Pipeline runs - Cancel recursive")
+    ![The cancel recursive option is shown.](img/cancel-recursive.png "Pipeline runs - Cancel recursive")
 
     > **Please note**: If you see that any of these pipeline activities failed, that is OK. The activities within have a 2-minute timeout so they do not disrupt the queries run during this lab.
 
@@ -533,7 +533,7 @@ Let's start by experimenting with different parameters.
 
 2. Select **Run** from the toolbar menu to execute the SQL command.
 
-    ![The run button is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-run.png "Run")
+    ![The run button is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-run.png "Run")
 
 3. In the query window, replace the script with the following to create a Workload Classifier called `CEODreamDemo` that assigns a workload group and importance to incoming requests:
 
@@ -549,7 +549,7 @@ Let's start by experimenting with different parameters.
 
 4. Select **Run** from the toolbar menu to execute the SQL command.
 
-    ![The run button is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-run.png "Run")
+    ![The run button is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-run.png "Run")
 
 5. In the query window, replace the script with the following to confirm that there are no active queries being run by `asa.sql.workload02` (suspended queries are OK):
 
@@ -566,15 +566,15 @@ Let's start by experimenting with different parameters.
 
 6. Select **Run** from the toolbar menu to execute the SQL command.
 
-    ![The run button is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-run.png "Run")
+    ![The run button is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-run.png "Run")
 
 7. Select the **Integrate** hub.
 
-    ![The integrate hub is highlighted.](media/integrate-hub.png "Integrate hub")
+    ![The integrate hub is highlighted.](img/integrate-hub.png "Integrate hub")
 
 8. Select the **Lab 08 - Execute Business Analyst Queries** Pipeline **(1)**, which will run / trigger  `asa.sql.workload02` queries. Select **Add trigger (2)**, then **Trigger now (3)**. In the dialog that appears, select **OK**.
 
-    ![The add trigger and trigger now menu items are highlighted.](media/trigger-business-analyst-queries-pipeline.png "Add trigger")
+    ![The add trigger and trigger now menu items are highlighted.](img/trigger-business-analyst-queries-pipeline.png "Add trigger")
 
     > **Note**: Leave this tab open since you will come back to this pipeline again.
 
@@ -591,21 +591,21 @@ Let's start by experimenting with different parameters.
 
 10. Select **Run** from the toolbar menu to execute the SQL command.
 
-    ![The run button is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-run.png "Run")
+    ![The run button is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-run.png "Run")
 
     You should see an output similar to the following that shows the importance for each session set to `below_normal`:
 
-    ![The script results show that each session was executed with below normal importance.](media/sql-result-below-normal.png "SQL script")
+    ![The script results show that each session was executed with below normal importance.](img/sql-result-below-normal.png "SQL script")
 
     Notice that the running scripts are executed by the `asa.sql.workload02` user **(1)** with an Importance level of **below_normal (2)**. We have successfully configured the business analyst queries to execute at a lower importance than the CEO queries. We can also see that the `CEODreamDemo` Workload Classifier works as expected.
 
 11. Select the **Monitor** hub.
 
-    ![The monitor hub is highlighted.](media/monitor-hub.png "Monitor hub")
+    ![The monitor hub is highlighted.](img/monitor-hub.png "Monitor hub")
 
 12. Select **Pipeline runs (1)**, and then select **Cancel recursive (2)** for each running Lab 08 pipelines, marked **In progress (3)**. This will help speed up the remaining tasks.
 
-    ![The cancel recursive option is shown.](media/cancel-recursive-ba.png "Pipeline runs - Cancel recursive")
+    ![The cancel recursive option is shown.](img/cancel-recursive-ba.png "Pipeline runs - Cancel recursive")
 
 13. Return to the query window under the **Develop** hub. In the query window, replace the script with the following to set 3.25% minimum resources per request:
 
@@ -635,7 +635,7 @@ Let's start by experimenting with different parameters.
 
 14. Select **Run** from the toolbar menu to execute the SQL command.
 
-    ![The run button is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-run.png "Run")
+    ![The run button is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-run.png "Run")
 
 ## Exercise 3: Optimizing data warehouse query performance in Azure Synapse Analytics
 
@@ -643,15 +643,15 @@ Let's start by experimenting with different parameters.
 
 1. Select the **Develop** hub.
 
-    ![The develop hub is highlighted.](media/develop-hub.png "Develop hub")
+    ![The develop hub is highlighted.](img/develop-hub.png "Develop hub")
 
 2. From the **Develop** menu, select the **+** button **(1)** and choose **SQL Script (2)** from the context menu.
 
-    ![The SQL script context menu item is highlighted.](media/synapse-studio-new-sql-script.png "New SQL script")
+    ![The SQL script context menu item is highlighted.](img/synapse-studio-new-sql-script.png "New SQL script")
 
 3. In the toolbar menu, connect to the **SQLPool01** database to execute the query.
 
-    ![The connect to option is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-connect.png "Query toolbar")
+    ![The connect to option is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-connect.png "Query toolbar")
 
 4. In the query window, replace the script with the following to count the number of records in a heap table:
 
@@ -664,7 +664,7 @@ Let's start by experimenting with different parameters.
 
 5. Select **Run** from the toolbar menu to execute the SQL command.
 
-    ![The run button is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-run.png "Run")
+    ![The run button is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-run.png "Run")
 
     The script takes up to **15 seconds** to execute and returns a count of ~982 million rows in the table.
 
@@ -672,7 +672,7 @@ Let's start by experimenting with different parameters.
 
     > **Note**: _Do not_ execute this query ahead of time. If you do, the query may run faster during subsequent executions.
 
-    ![The COUNT_BIG result is displayed.](media/count-big1.png "SQL script")
+    ![The COUNT_BIG result is displayed.](img/count-big1.png "SQL script")
 
 6. In the query window, replace the script with the following (more complex) statement:
 
@@ -692,13 +692,13 @@ Let's start by experimenting with different parameters.
 
 7. Select **Run** from the toolbar menu to execute the SQL command.
 
-    ![The run button is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-run.png "Run")
+    ![The run button is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-run.png "Run")
   
     The script takes up to **60 seconds** to execute and returns the result. There is clearly something wrong with the `Sale_Heap` table that induces the performance hit.
 
     > If the script is still running after 90 seconds, click on Cancel.
 
-    ![The query execution time of 51 seconds is highlighted in the query results.](media/sale-heap-result.png "Sale Heap result")
+    ![The query execution time of 51 seconds is highlighted in the query results.](img/sale-heap-result.png "Sale Heap result")
 
     > Note the OPTION clause used in the statement. This comes in handy when you're looking to identify your query in the [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) DMV.
     >
@@ -710,11 +710,11 @@ Let's start by experimenting with different parameters.
 
 8. Select the **Data** hub.
 
-    ![The data hub is highlighted.](media/data-hub.png "Data hub")
+    ![The data hub is highlighted.](img/data-hub.png "Data hub")
 
 9. Expand the **SQLPool01** database and its list of tables. Right-click **`wwi_poc.Sale` (1)**, select **New SQL script (2)**, then select **CREATE (3)**.
 
-    ![The CREATE script is highlighted for the Sale table.](media/sale-heap-create.png "Create script")
+    ![The CREATE script is highlighted for the Sale table.](img/sale-heap-create.png "Create script")
 
 10. Take a look at the script used to create the table:
 
@@ -835,7 +835,7 @@ Let's start by experimenting with different parameters.
 
     Data movement is an operation where parts of the distributed tables are moved to different nodes during query execution. This operation is required where the data is not available on the target node, most commonly when the tables do not share the distribution key. The most common data movement operation is shuffle. During shuffle, for each input row, Synapse computes a hash value using the join columns and then sends that row to the node that owns that hash value. Either one or both sides of join can participate in the shuffle. The diagram below displays shuffle to implement join between tables T1 and T2 where neither of the tables is distributed on the join column col2.
 
-    ![Shuffle move conceptual representation.](media/shuffle-move.png "Shuffle move")
+    ![Shuffle move conceptual representation.](img/shuffle-move.png "Shuffle move")
 
     Let's dive now into the details provided by the query plan to understand some of the problems our current approach has. The following table contains the description of every operation mentioned in the query plan:
 
@@ -866,7 +866,7 @@ Let's start by experimenting with different parameters.
 
     The result contains, among other things, the query id (`Request_id`), the label, and the original SQL statement:
 
-    ![Retrieving the query id](./media/lab3_query_id.png)
+    ![Retrieving the query id](img/lab3_query_id.png)
 
 13. With the query id (`QID5418` in this case, **substitute with your id**) you can now investigate the individual steps of the query:
 
@@ -883,7 +883,7 @@ Let's start by experimenting with different parameters.
 
     The steps (indexed 0 to 4) are matching operations 2 to 6 from the query plan. Again, the culprit stands out: the step with index 2 describes the inter-partition data movement operation. By looking at the `TOTAL_ELAPSED_TIME` column one can clearly tell the largest part of the query time is generated by this step. **Take note of the step index** for the next query.
 
-    ![Query execution steps](./media/lab3_shuffle_move_2.png)
+    ![Query execution steps](img/lab3_shuffle_move_2.png)
 
 14. Get more details on the problematic step using the following SQL statement (substitute the `request_id` and `step_index` with your values):
 
@@ -899,7 +899,7 @@ Let's start by experimenting with different parameters.
 
     The results of the statement provide details about what happens on each distribution within the SQL pool.
 
-    ![Query execution step details](./media/lab3_shuffle_move_3.png)
+    ![Query execution step details](img/lab3_shuffle_move_3.png)
 
 15. Finally, you can use the following SQL statement to investigate data movement on the distributed databases (substitute the `request_id` and `step_index` with your values):
 
@@ -917,21 +917,21 @@ Let's start by experimenting with different parameters.
 
     The results of the statement provide details about data being moved at each distribution. The `ROWS_PROCESSED` column is especially useful here to get an estimate of the magnitude of the data movement happening when the query is executed.
 
-    ![Query execution step data movement](./media/lab3_shuffle_move_4.png)
+    ![Query execution step data movement](img/lab3_shuffle_move_4.png)
 
 ### Task 2: Improve table structure with hash distribution and columnstore index
 
 1. Select the **Develop** hub.
 
-    ![The develop hub is highlighted.](media/develop-hub.png "Develop hub")
+    ![The develop hub is highlighted.](img/develop-hub.png "Develop hub")
 
 2. From the **Develop** menu, select the **+** button **(1)** and choose **SQL Script (2)** from the context menu.
 
-    ![The SQL script context menu item is highlighted.](media/synapse-studio-new-sql-script.png "New SQL script")
+    ![The SQL script context menu item is highlighted.](img/synapse-studio-new-sql-script.png "New SQL script")
 
 3. In the toolbar menu, connect to the **SQLPool01** database to execute the query.
 
-    ![The connect to option is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-connect.png "Query toolbar")
+    ![The connect to option is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-connect.png "Query toolbar")
 
 4. In the query window, replace the script with the following to create an improved version of the table using CTAS (Create Table As Select):
 
@@ -951,7 +951,7 @@ Let's start by experimenting with different parameters.
 
 5. Select **Run** from the toolbar menu to execute the SQL command.
 
-    ![The run button is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-run.png "Run")
+    ![The run button is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-run.png "Run")
 
     The query will take around **10 minutes** to complete. While this is running, read the rest of the lab instructions to familiarize yourself with the content.
 
@@ -979,11 +979,11 @@ Let's start by experimenting with different parameters.
 
 7. Select **Run** from the toolbar menu to execute the SQL command.
 
-    ![The run button is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-run.png "Run")
+    ![The run button is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-run.png "Run")
 
     You should see a performance improvement executing against the new Hash table compared to the first time we ran the script against the Heap table. In our case, the query executed in about 8 seconds.
 
-    ![The script run time of 6 seconds is highlighted in the query results.](media/sale-hash-result.png "Hash table results")
+    ![The script run time of 6 seconds is highlighted in the query results.](img/sale-hash-result.png "Hash table results")
 
 8. Run the following EXPLAIN statement again to get the query plan (do not select `Query Plan` from the toolbar as it will try do download the query plan and open it in SQL Server Management Studio):
 
@@ -1105,7 +1105,7 @@ The dedicated SQL pool already contains two versions of the `Sale` table that ha
 
 Notice the two partitioning strategies we've used here. The first partitioning scheme is month-based and the second is quarter-based **(3)**.
 
-![The queries are highlighted as described.](media/partition-ctas.png "Partition CTAS queries")
+![The queries are highlighted as described.](img/partition-ctas.png "Partition CTAS queries")
 
 #### Task 4.1: Table distributions
 
@@ -1387,7 +1387,7 @@ As opposed to a standard view, a materialized view pre-computes, stores, and mai
     DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD ( 'wwi_perf.mvCustomerSales' )
     ```
 
-    ![Materialized view overhead after update](./media/lab3_materialized_view_updated.png)
+    ![Materialized view overhead after update](img/lab3_materialized_view_updated.png)
 
     There is now a delta stored by the materialized view which results in `TOTAL_ROWS` being greater than `BASE_VIEW_ROWS` and `OVERHEAD_RATIO` being greater than 1.
 
@@ -1399,7 +1399,7 @@ As opposed to a standard view, a materialized view pre-computes, stores, and mai
     DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD ( 'wwi_perf.mvCustomerSales' )
     ```
 
-    ![Materialized view overhead after rebuild](./media/lab3_materialized_view_rebuilt.png)
+    ![Materialized view overhead after rebuild](img/lab3_materialized_view_rebuilt.png)
 
 ### Task 2: Use result set caching
 
@@ -1427,11 +1427,11 @@ Result cache is evicted regularly based on a time-aware least recently used algo
 
 2. Select **Run** from the toolbar menu to execute the SQL command.
 
-    ![The run button is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-run.png "Run")
+    ![The run button is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-run.png "Run")
 
     Look at the output of the query. What is the `is_result_set_caching_on` value for **SQLPool01**? In our case, it is set to `False`, meaning result set caching is currently disabled.
 
-    ![The result set caching is set to False.](media/result-set-caching-disabled.png "SQL query result")
+    ![The result set caching is set to False.](img/result-set-caching-disabled.png "SQL query result")
 
 3. In the query window, change the database to **master (1)**, then replace the script **(2)** with the following to activate result set caching:
 
@@ -1440,11 +1440,11 @@ Result cache is evicted regularly based on a time-aware least recently used algo
     SET RESULT_SET_CACHING ON
     ```
 
-    ![The master database is selected and the script is displayed.](media/enable-result-set-caching.png "Enable result set caching")
+    ![The master database is selected and the script is displayed.](img/enable-result-set-caching.png "Enable result set caching")
 
 4. Select **Run** from the toolbar menu to execute the SQL command.
 
-    ![The run button is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-run.png "Run")
+    ![The run button is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-run.png "Run")
 
     > **Important**
     >
@@ -1452,7 +1452,7 @@ Result cache is evicted regularly based on a time-aware least recently used algo
 
 5. In the toolbar menu, connect to the **SQLPool01** database for the next query.
 
-    ![The connect to option is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-sqlpool01-database.png "Query toolbar")
+    ![The connect to option is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-sqlpool01-database.png "Query toolbar")
 
 6. In the query window, replace the script with the following query and immediately check if it hit the cache:
 
@@ -1493,11 +1493,11 @@ Result cache is evicted regularly based on a time-aware least recently used algo
 
 7. Select **Run** from the toolbar menu to execute the SQL command.
 
-    ![The run button is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-run.png "Run")
+    ![The run button is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-run.png "Run")
 
     As expected, the result is **`False` (0)**.
 
-    ![The returned value is false.](media/result-cache-hit1.png "Result set cache hit")
+    ![The returned value is false.](img/result-cache-hit1.png "Result set cache hit")
 
     Still, you can identify that, while running the query, dedicated SQL pool has also cached the result set.
 
@@ -1529,11 +1529,11 @@ Result cache is evicted regularly based on a time-aware least recently used algo
 
 9. Select **Run** from the toolbar menu to execute the SQL command.
 
-    ![The run button is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-run.png "Run")
+    ![The run button is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-run.png "Run")
 
     The execution plan reveals the building of the result set cache:
 
-    ![The building of the result set cache.](media/result-set-cache-build.png "Result cache build")
+    ![The building of the result set cache.](img/result-set-cache-build.png "Result cache build")
 
     You can control at the user session level the use of the result set cache.
 
@@ -1590,11 +1590,11 @@ Result cache is evicted regularly based on a time-aware least recently used algo
 
 11. Select **Run** from the toolbar menu to execute the SQL command.
 
-    ![The run button is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-run.png "Run")
+    ![The run button is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-run.png "Run")
 
     The result of **`SET RESULT_SET_CACHING OFF`** in the script above is visible in the cache hit test results (The `result_cache_hit` column returns `1` for cache hit, `0` for cache miss, and *negative values* for reasons why result set caching was not used.):
 
-    ![Result cache on and off.](media/result-set-cache-off.png "Result cache on/off results")
+    ![Result cache on and off.](img/result-set-cache-off.png "Result cache on/off results")
 
 12. In the query window, replace the script with the following to check the space used by the result cache:
 
@@ -1604,11 +1604,11 @@ Result cache is evicted regularly based on a time-aware least recently used algo
 
 13. Select **Run** from the toolbar menu to execute the SQL command.
 
-    ![The run button is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-run.png "Run")
+    ![The run button is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-run.png "Run")
 
     We can see the amount of space reserved, how much is used by data, the amount used for the index, and how much unused space there is for the result cache in the query results.
 
-    ![Check the size of the result set cache.](media/result-set-cache-size.png "Result cache size")
+    ![Check the size of the result set cache.](img/result-set-cache-size.png "Result cache size")
 
 14. In the query window, replace the script with the following to clear the result set cache:
 
@@ -1618,7 +1618,7 @@ Result cache is evicted regularly based on a time-aware least recently used algo
 
 15. Select **Run** from the toolbar menu to execute the SQL command.
 
-    ![The run button is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-run.png "Run")
+    ![The run button is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-run.png "Run")
 
 16. In the query window, change the database to **master (1)**, then replace the script **(2)** with the following to disable result set caching:
 
@@ -1627,11 +1627,11 @@ Result cache is evicted regularly based on a time-aware least recently used algo
     SET RESULT_SET_CACHING OFF
     ```
 
-    ![The master database is selected and the script is displayed.](media/disable-result-set-caching.png "Disable result set caching")
+    ![The master database is selected and the script is displayed.](img/disable-result-set-caching.png "Disable result set caching")
 
 17. Select **Run** from the toolbar menu to execute the SQL command.
 
-    ![The run button is highlighted in the query toolbar.](media/synapse-studio-query-toolbar-run.png "Run")
+    ![The run button is highlighted in the query toolbar.](img/synapse-studio-query-toolbar-run.png "Run")
 
     > **Note**
     >
@@ -1679,7 +1679,7 @@ For example, if the optimizer estimates that the date your query is filtering on
 
     Notice the special name pattern used for automatically created statistics:
 
-    ![View automatically created statistics](./media/lab3_statistics_automated.png)
+    ![View automatically created statistics](img/lab3_statistics_automated.png)
 
 3. Check if there are any statistics created for `CustomerId` from the `wwi_perf.Sale_Has` table:
 
@@ -1707,7 +1707,7 @@ For example, if the optimizer estimates that the date your query is filtering on
     - **Category column**: RANGE_HI_KEY
     - **Legend (series) columns**: RANGE_ROWS
 
-    ![Statistics created for CustomerId](./media/lab3_statistics_customerid.png)
+    ![Statistics created for CustomerId](img/lab3_statistics_customerid.png)
 
     You now have a visual on the statistics created for the `CustomerId` column.
 
@@ -1865,7 +1865,7 @@ Queries with the following patterns typically run faster with ordered CCI:
 
     With this information on hand, take a look at the result:
 
-    ![CCI segment structure on each distribution](./media/lab3_ordered_cci.png)
+    ![CCI segment structure on each distribution](img/lab3_ordered_cci.png)
 
     Browse through the result set and notice the significant overlap between segments. There is literally overlap in customer ids between every single pair of segments (`CustomerId` values in the data range from 1 to 1,000,000). The segment structure of this CCI is clearly inefficient and will result in a lot of unnecessary reads from storage.
 
@@ -1929,7 +1929,7 @@ Queries with the following patterns typically run faster with ordered CCI:
 
     The results show significantly less overlap between segments:
 
-    ![CCI segment structure on each distribution with ordered CCI](./media/lab3_ordered_cci_2.png)
+    ![CCI segment structure on each distribution with ordered CCI](img/lab3_ordered_cci_2.png)
 
 ## Exercise 5: Cleanup
 
@@ -1941,12 +1941,12 @@ Complete these steps to free up resources you no longer need.
 
 2. Select the **Manage** hub.
 
-    ![The manage hub is highlighted.](media/manage-hub.png "Manage hub")
+    ![The manage hub is highlighted.](img/manage-hub.png "Manage hub")
 
 3. Select **SQL pools** in the left-hand menu **(1)**. Hover over the name of the dedicated SQL pool and select **Pause (2)**.
 
-    ![The pause button is highlighted on the dedicated SQL pool.](media/pause-dedicated-sql-pool.png "Pause")
+    ![The pause button is highlighted on the dedicated SQL pool.](img/pause-dedicated-sql-pool.png "Pause")
 
 4. When prompted, select **Pause**.
 
-    ![The pause button is highlighted.](media/pause-dedicated-sql-pool-confirm.png "Pause")
+    ![The pause button is highlighted.](img/pause-dedicated-sql-pool-confirm.png "Pause")
