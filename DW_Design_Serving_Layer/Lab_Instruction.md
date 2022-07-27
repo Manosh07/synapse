@@ -5,18 +5,17 @@ Before starting this lab, ensure you have successfully completed the setup steps
 
 ### Task 1: Upload CSV file to Data Lake Storage account
 
-1. Step 1
+**Step 1**
 
     ![The manage hub is highlighted.](img/Create-Container.png)
 
-2. Step 2
+**Step 2**
     ![Create directory](img/Alchemy-Word-000117.png)
 
-3. Step 3
+**Step 3**: Download awdata file and upload to the awdata directory [Click here to download](https://github.com/pankajcloudthat/alchemy-imb/tree/main/data/awdata) and then Click on upload
+
+**Step 4**
     ![Upload blob.](img/Uploadblob-MicrosoftAzure-000118.png)
-
-4. Download awdata file and upload to the awdata directory [Click here to download](https://github.com/pankajcloudthat/alchemy-imb/tree/main/data/awdata) and then Click on upload
-
 
 ## Exercise 1: Implementing a Star Schema
 
