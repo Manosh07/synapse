@@ -1242,7 +1242,7 @@ In this task, you load the Synapse dimension and fact tables with data from a pu
 
     ```sql
     COPY INTO [dbo].[DimDate]
-    FROM 'https://<storage-account-name>.blob.core.windows.net/data/awdata/awdata/DimDate.csv'
+    FROM 'https://<storage-account-name>.blob.core.windows.net/data/awdata/DimDate.csv'
     WITH (
         FILE_TYPE='CSV',
         FIELDTERMINATOR='|',
