@@ -1179,7 +1179,7 @@ In this task, you create a star schema in Azure Synapse dedicated pool. The firs
 
 In this task, you load the Synapse dimension and fact tables with data from a public data source. There are two ways to load this data from Azure Storage files using T-SQL: the COPY command or selecting from external tables using Polybase. For this task you will use COPY since it is a simple and flexible syntax for loading delimited data from Azure Storage. If the source were a private storage account you would include a CREDENTIAL option to authorize the COPY command to read the data, but for this example that is not required.
 
-1. Paste **and execute** the query with the following to insert data into the fact and dimension tables:
+1. Replace the **storage-account-name** and **execute** the following query to insert data into the fact and dimension tables:
 
     ```sql
     COPY INTO [dbo].[DimProduct]
