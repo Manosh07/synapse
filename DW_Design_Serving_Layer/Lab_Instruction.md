@@ -691,9 +691,9 @@ Generate the SAS Key for the stoage account got asadatalakexxxxx storage account
  
  ![The SAS Key.](img/Generate-SAS-Token.png)
 
-1. Replace the **SAS-Key** and **execute** the following into the query to create a master key encryption, database scoped credential, and external data source that accesses the public blob storage account that contains the source data:
+1. Replace the **SAS-Key** and **storage-account-name** from the following code then **execute** the query to create a master key encryption, database scoped credential, and external data source that accesses the public blob storage account that contains the source data:
 
-> When the TYPE = BLOB_STORAGE, the credential must be created using SHARED ACCESS SIGNATURE as the identity. 
+> **Note**: When the **TYPE = BLOB_STORAGE**, the credential must be created using **SHARED ACCESS SIGNATURE** as the identity. 
 
   Furthermore, the SAS token should be configured as follows:
   - **Exclude** the leading **?** when configured as the secret
